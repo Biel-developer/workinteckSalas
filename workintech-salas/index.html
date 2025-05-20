@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Controle de Salas</h1>
+  <!-- <div class="containerForms">
+        <form id="formSala">
+          <input type="text" id="nomeSala" placeholder="Nome da sala" required>
+          <input type="text" id="observacoes" placeholder="Observações">
+          <button type="submit">Adicionar Sala</button>
+        </form>
+  </div> -->
+
+  
+  <div id="listaSalas"></div>
+
+  <div id="editarModal" class="modal-editar" style="display: none;">
+  <div class="modal-conteudo">
+    <h2>Editar Sala</h2>
+    <form id="formEditar">
+      <input type="text" id="editarNome" placeholder="Nome da sala" required>
+      <textarea id="editarObs" placeholder="Observações"></textarea>
+      <button type="submit">Salvar</button>
+      <button type="button" onclick="fecharModal()">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

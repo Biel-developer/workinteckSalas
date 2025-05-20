@@ -1,0 +1,272 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background-color: #222222;
+  color: #fff; /* define cor base do texto */
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+}
+
+.containerForms {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.containerForms #formSala {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px; /* limita a largura no desktop */
+  justify-content: center;
+  gap: 10px; /* substitui gap no formSala geral */
+  margin-bottom: 20px;
+}
+
+#formSala input {
+  background-color: #222;
+  color: #fff;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.27); /* rgba para melhor controle */
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+#formSala input:focus {
+  border-color: #442bec;
+}
+
+#formSala button {
+  padding: 15px;
+  background-color: #442bec;
+  color: #fff;
+  border: 1px solid #442bec;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+#formSala button:hover {
+  background-color: #361abf;
+  border-color: #361abf;
+}
+
+#listaSalas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 10px 15px; /* padding lateral para afastar das bordas da tela */
+  box-sizing: border-box;
+}
+
+.card {
+  background: #222222;
+  /* margin removida porque o gap já dá espaçamento */
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 280px;
+  box-sizing: border-box; /* importante para calcular o tamanho */
+  background-size: 400% 400%;
+  transition: transform 0.3s, background 0.8s linear;
+}
+
+@media (max-width: 600px) {
+  #listaSalas {
+    padding: 10px;
+  }
+  .card {
+    width: 100%; /* ocupa toda largura da grid cell */
+  }
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(270deg, #442bec, #6e56f9, #442bec);
+  background-size: 600% 600%;
+  animation: animacaoGradiente 3s ease infinite;
+}
+
+@keyframes animacaoGradiente {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card h3 {
+  color: #fff;
+  margin-top: 0;
+}
+
+.card p {
+  color: rgba(255, 255, 255, 0.49);
+  margin: 6px 0;
+}
+
+.card strong {
+  color: #fff;
+}
+
+/* Botões reutilizáveis */
+.btn-verde, .btn-vermelho, #removerCard {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  border: 1px solid;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+}
+
+.btn-verde {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.btn-verde:hover {
+  transform: scale(1.03);
+  background-color: #45a049;
+  border-color: #45a049;
+}
+
+.btn-vermelho, #removerCard {
+  background-color: #FF3B3B;
+  border-color: #FF3B3B;
+}
+
+.btn-vermelho:hover, #removerCard:hover {
+  transform: scale(1.03);
+  background-color: #e63232;
+  border-color: #e63232;
+}
+
+#removerCard {
+  /* para manter compatibilidade com o botão de remover */
+  display: inline-block;
+}
+
+/* Ícone de status no card */
+.status-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+}
+
+.status-icon.visited {
+  color: #4CAF50; /* verde */
+}
+
+.status-icon.not-visited {
+  color: #FF3B3B; /* vermelho */
+}
+
+/* Modal */
+.modal-editar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-conteudo {
+  background-color: #1e1e2f;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 0 10px #000;
+  color: white;
+}
+
+.modal-conteudo input,
+.modal-conteudo textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.modal-conteudo button {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 14px;
+}
+
+.modal-conteudo button[type="button"] {
+  background-color: #FF3B3B;
+}
+
+/* Responsividade básica */
+@media (max-width: 600px) {
+  .containerForms {
+    padding: 10px;
+  }
+  .containerForms #formSala {
+    max-width: 100%;
+  }
+  .card {
+    width: 100%;
+  }
+}
+
+.status-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.status-icon.visited {
+  color: green;
+}
+.status-icon.not-visited {
+  color: red;
+}
+
+.btn-toggle-status {
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.btn-toggle-status:hover {
+  background-color: #0056b3;
+}
+
